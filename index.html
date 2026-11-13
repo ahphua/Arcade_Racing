@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Arcade Racing WEB v1.0</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="menu" class="screen show">
+    <div class="topbar">
+      <div><h1>ARCADE RACING</h1><div class="version">WEB v1.0 · v1.1.43 browser edition</div></div>
+      <div class="topButtons"><button id="fullscreenBtn">全屏</button><button id="resetSettingsBtn">重置设定</button></div>
+    </div>
+    <div class="garage">
+      <section class="heroCard">
+        <div class="carStage"><img id="heroCar" alt="car"><div class="frontTag">FRONT ↑</div></div>
+        <div class="carInfo">
+          <h2 id="carName"></h2>
+          <div id="carDesc" class="muted"></div>
+          <div class="specLine"><b>NORMAL TOP</b><span id="topSpeed"></span></div>
+          <div class="specLine cyan"><b>GAMEPAD X BOOST</b><span>500 km/h</span></div>
+          <div class="stats" id="stats"></div>
+        </div>
+        <div class="settings">
+          <label>BGM <input id="bgm" type="range" min="0" max="100" value="30"><span></span></label>
+          <label>ENGINE <input id="engine" type="range" min="0" max="100" value="75"><span></span></label>
+          <label>CRASH <input id="crash" type="range" min="0" max="100" value="29"><span></span></label>
+          <label>MISSILE <input id="missile" type="range" min="0" max="100" value="25"><span></span></label>
+          <label>LAUNCH <input id="launch" type="range" min="0" max="100" value="50"><span></span></label>
+          <label class="selectRow">SCREEN <select id="orientation"><option value="landscape">LANDSCAPE</option><option value="portrait">PORTRAIT</option></select></label>
+          <button id="startBtn" class="startBtn">开始比赛</button>
+        </div>
+      </section>
+      <div class="garageTitle">选择车款 <span id="garageCount"></span></div>
+      <div id="garageGrid" class="garageGrid"></div>
+      <div class="help">键盘：W/↑/Space 油门 · S/↓ 刹车 · A/D 或 ←/→ 转向 · X Nitro / 500 Boost · Z/Ctrl/J 飞弹 · P/Esc 暂停</div>
+      <div class="help">手柄：RT 油门 · LT/B 刹车 · 左摇杆转向 · X 500 Boost · A 飞弹（按住2秒=3颗 / 5秒=5颗）</div>
+    </div>
+  </div>
+
+  <div id="game" class="screen">
+    <canvas id="canvas" width="1280" height="720"></canvas>
+    <div id="pauseOverlay" class="overlay hidden"><div class="modal"><h2>暂停</h2><button id="resumeBtn">继续比赛</button><button id="restartBtn">重新开始</button><button id="garageBtn">返回车库</button></div></div>
+    <div id="gameOverOverlay" class="overlay hidden"><div class="modal"><h2>GAME OVER</h2><div id="finalScore"></div><button id="againBtn">再来一次</button><button id="garageBtn2">返回车库</button></div></div>
+    <div id="touchControls">
+      <button data-touch="left">◀</button><button data-touch="right">▶</button>
+      <button data-touch="brake">BRAKE</button><button data-touch="gas">GAS</button>
+      <button data-touch="boost">X</button><button data-touch="missile">MISSILE</button>
+    </div>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
